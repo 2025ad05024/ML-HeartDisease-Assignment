@@ -34,6 +34,41 @@ The following steps were performed:
     -   Accuracy: `0.8696`
     -   F1-Score: `0.8835`
 
+ ## Model Performance Comparison
+| Model                   | Accuracy  | Precision | Recall   | F1-Score | MCC     | AUC  |
+
+|--------------------------|-----------|-----------|----------|----------|---------|------|
+
+| Logistic Regression      | 0.88587   | 0.885714  | 0.911765 | 0.898551 | 0.7686  | 0.90 |
+
+| Random Forest            | 0.880435  | 0.877358  | 0.911765 | 0.894231 | 0.757588| 0.89 |
+
+| Naive Bayes              | 0.820125  | 0.800126  | 0.813470 | 0.800001 | 0.62131 | 0.82 |
+
+| Support Vector Machine   | 0.875     | 0.862385  | 0.921569 | 0.890995 | 0.747131| 0.88 |
+
+| K-Nearest Neighbors      | 0.86413   | 0.881188  | 0.872549 | 0.876847 | 0.725384| 0.86 |
+
+| Decision Tree            | 0.804348  | 0.823529  | 0.823529 | 0.823529 | 0.604017| 0.81 |
+
+## Model Performance Observations
+
+| ML Model Name            | Observation about model performance |
+
+|---------------------------|-------------------------------------|
+
+| \*\*Logistic Regression\*\*   | This model consistently delivered strong results and showed modest gains after tuning, ultimately achieving the highest MCC score. It stands out as the most effective predictor of heart disease in this study.Untuned MCC: 0.7686Tuned MCC: 0.7797 |
+
+| \*\*Decision Tree\*\*         | Among the untuned models, the Decision Tree recorded low MCC, highlighting its limited effectiveness for this dataset. It was therefore excluded from the final tuned comparison, as tuning either did not improve its MCC or yielded no valid result.Untuned MCC: 0.6040Tuned MCC: did not improve significantly |
+
+| \*\*K-Nearest Neighbors\*\*   | The kNN classifier delivered moderate performance overall, and hyperparameter tuning provided a small but positive improvement in its MCC score, indicating a slight boost in predictive reliability. Untuned MCC: 0.7254 Tuned MCC: 0.7356 |
+
+| \*\*Naive Bayes\*\*           | Naive Bayes delivered modest results, with MCC values remaining relatively low. Tuning did not yield meaningful improvement, and its performance lagged behind Logistic Regression and Random Forest. Untuned MCC: \~0.68Tuned MCC: \~0.69 |
+
+| \*\*Random Forest (Ensemble)\*\* | This model demonstrated strong performance overall, with its MCC improving slightly after tuning. While it remained competitive, it ranked just behind Logistic Regression in the tuned comparison.Untuned MCC: 0.7576Tuned MCC: 0.7598 |
+
+| \*\*Overall Winner\*\*        | Based on my analysis and assignment execution, the Logistic Regression model is the best performing model overall. After hyperparameter tuning, it achieved the highest MCC of 0.7797. |
+
 ## How to Run the Code
 
 ### 1. Clone the Repository
