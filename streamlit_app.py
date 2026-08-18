@@ -16,7 +16,7 @@ st.write("This application allows you to predict heart disease and evaluate mode
 @st.cache_resource
 def load_artifacts():
     model_dir = 'trained_models'
-    
+
     # Load StandardScaler
     scaler_filename = os.path.join(model_dir, 'scaler.joblib')
     if not os.path.exists(scaler_filename):
@@ -40,7 +40,7 @@ def load_artifacts():
             st.error(f"Error: Model file {filename} not found at {model_path}. Please ensure all models are saved.")
             st.stop()
         loaded_models[display_name] = joblib.load(model_path)
-    
+
     return scaler, loaded_models
 
 scaler, tunned_models = load_artifacts()
@@ -125,7 +125,7 @@ if app_mode == "Predict Heart Disease":
             'ST_Slope': st_slope
         }
         input_df_raw = pd.DataFrame(input_data, index=[0])
-    
+
     st.subheader("User Input Features:")
     st.write(input_df_raw)
 
@@ -133,8 +133,8 @@ if app_mode == "Predict Heart Disease":
 
     # Model Selection for Interactive Prediction
     model_choice_interactive = st.selectbox(
-        "Select Model for Interactive Prediction", 
-        list(tunned_models.keys()), 
+        "Select Model for Interactive Prediction",
+        list(tunned_models.keys()),
         index=list(tunned_models.keys()).index('K-Nearest Neighbors') # Default to best model
     )
     selected_model_interactive = tunned_models[model_choice_interactive]
@@ -181,7 +181,7 @@ elif app_mode == "Evaluate Models":
 
         for name, model in tunned_models.items():
             y_pred = model.predict(X_test_uploaded_processed)
-            
+
             accuracy = accuracy_score(y_test_uploaded, y_pred)
             precision = precision_score(y_test_uploaded, y_pred, zero_division=0)
             recall = recall_score(y_test_uploaded, y_pred, zero_division=0)
@@ -202,7 +202,7 @@ elif app_mode == "Evaluate Models":
                 'F1-Score': f1,
                 'ROC AUC': roc_auc
             }
-        
+
         results_df_eval = pd.DataFrame(results_eval).T.sort_values(by='ROC AUC', ascending=False)
         st.dataframe(results_df_eval)
 
